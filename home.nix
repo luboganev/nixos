@@ -9,6 +9,8 @@
     keepassxc
     ghostty
     github-desktop
+    discord
+    vlc
   ];
 
   programs.git = {
