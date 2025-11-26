@@ -5,6 +5,12 @@
   home.homeDirectory = "/home/luboganev";
   home.stateVersion = "25.05";
 
+  home.packages = with pkgs; [
+    keepassxc
+    ghostty
+    github-desktop
+  ];
+
   programs.git = {
     enable = true;
     userName = "Lyubomir Ganev";
