@@ -95,7 +95,12 @@
   environment.systemPackages = with pkgs; [
     git
     bat
+    lact # Linux GPU Configuration Tool for AMD and NVIDIA
   ];
+
+  # Setup daemon for lact
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
