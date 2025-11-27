@@ -63,7 +63,25 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
+      # Gaming stuff
+      gamemode
+      gamescope
+      vulkan-tools
     ];
+  };
+
+  # Couldn't install and configure steam with home manager, thus here
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
+  # Graphics
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true; # will be needed by some games i.e. Witcher 3
   };
 
   # Install firefox.
