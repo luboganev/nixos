@@ -15,8 +15,12 @@
 
   programs.git = {
     enable = true;
-    userName = "Lyubomir Ganev";
-    userEmail = "luboganev@gmail.com";
+    settings = {
+      user = {
+        name = "Lyubomir Ganev";
+        email = "luboganev@gmail.com";
+      };
+    };
   };
 
   programs.bash = {
