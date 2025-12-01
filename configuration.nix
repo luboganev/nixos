@@ -96,6 +96,7 @@
     git
     bat
     lact # Linux GPU Configuration Tool for AMD and NVIDIA
+    vscode
   ];
 
   # Setup daemon for lact
