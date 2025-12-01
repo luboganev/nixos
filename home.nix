@@ -3,7 +3,7 @@
 {
   home.username = "luboganev";
   home.homeDirectory = "/home/luboganev";
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
     keepassxc
