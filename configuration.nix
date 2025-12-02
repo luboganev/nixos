@@ -83,6 +83,8 @@
     enable = true;
     enable32Bit = true; # will be needed by some games i.e. Witcher 3
   };
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Install firefox.
   programs.firefox.enable = true;
