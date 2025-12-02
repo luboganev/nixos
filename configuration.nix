@@ -101,6 +101,15 @@
     vscode
   ];
 
+  # ssh
+  programs.ssh = {
+    startAgent = true;
+    enableAskPassword = true;
+  };
+  environment.variables = {
+    SSH_ASKPASS_REQUIRE = "prefer";
+  };
+
   # Setup daemon for lact
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
