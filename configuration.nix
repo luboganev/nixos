@@ -37,7 +37,7 @@
   };
 
   # Time zone
-  time.timeZone = "Europe/Berlin";
+  time.timeZone = "Europe/Sofia";
 
   # Localization
   i18n.defaultLocale = "en_US.UTF-8";
