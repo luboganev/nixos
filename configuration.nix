@@ -57,7 +57,8 @@
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  services.xserver.xkb.layout = "us";
+  services.xserver.xkb.layout = "us,bg,de";
+  services.xserver.xkb.variant = ",phonetic,";
   console.keyMap = "en";
 
   # Basic services
