@@ -11,6 +11,7 @@
     github-desktop
     discord
     vlc
+    ytdownloader
   ];
 
   programs.git = {
