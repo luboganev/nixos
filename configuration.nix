@@ -59,6 +59,7 @@
   services.desktopManager.plasma6.enable = true;
   services.xserver.xkb.layout = "us,bg,de";
   services.xserver.xkb.variant = ",phonetic,";
+  services.xserver.xkb.options = "grp:alt_shift_toggle";
   console.keyMap = "en";
 
   # Basic services
