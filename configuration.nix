@@ -89,8 +89,6 @@
     packages = with pkgs; [
       kdePackages.kate
       # Gaming stuff
-      gamemode
-      gamescope
       vulkan-tools
     ];
   };
@@ -98,6 +96,7 @@
   # Couldn't install and configure steam with home manager, thus here
   programs.steam = {
     enable = true;
+    gamescopeSession.enable = true; # Fixes some potential upscaling issues
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
@@ -110,6 +109,12 @@
   };
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];
+
+  # Gaming
+  # adding those to packages isn't enough for some permissions reasons
+  programs.gamemode.enable = true;
+  programs.gamescope.enable = true;
+
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -124,6 +129,7 @@
     bat
     lact # Linux GPU Configuration Tool for AMD and NVIDIA
     vscode
+    mangohud # overlay for monitoring fps, temp etc.
   ];
 
   # ssh

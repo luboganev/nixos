@@ -12,6 +12,7 @@
     discord
     vlc
     yt-dlp
+    protonup-ng # for updating proton GE for gaming
   ];
 
   programs.git = {
@@ -29,5 +30,9 @@
     shellAliases = {
       nrs = "echo Copying to dotfiles; cp /etc/nixos/* ~/nixos-dotfiles/; echo Doing rebuild switch...; sudo nixos-rebuild switch";
     };
+  };
+
+  home.sessionVariables = {
+    STEAM_EXTRA_COMPACT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d"; # for protonup command
   };
 }
