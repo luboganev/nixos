@@ -11,7 +11,8 @@
     github-desktop
     discord
     vlc
-    yt-dlp
+    yt-dlp # download from youtube and other platforms
+    id3v2 # Command line editor for id3v2 tags
     protonup-ng # for updating proton GE for gaming
   ];
 
