@@ -1,4 +1,5 @@
 { config, lib, pkgs, ... }:
+
 {
   imports =
     [
@@ -6,8 +7,18 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev"; # "nodev" is used for UEFI
+      efiSupport = true;
+      useOSProber = true;
+    };
+    efi.canTouchEfiVariables = true;
+  };
 
   # Networking
   networking.networkmanager.enable = true;
@@ -37,7 +48,7 @@
   };
 
   # Time zone
-  time.timeZone = "Europe/Sofia";
+  time.timeZone = "Europe/Berlin";
 
   # Localization
   i18n.defaultLocale = "en_US.UTF-8";
@@ -107,8 +118,17 @@
     enable = true;
     enable32Bit = true; # will be needed by some games i.e. Witcher 3
   };
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  services.xserver.videoDrivers = [ "amdgpu" ];
+
+  # NVIDIA configuration
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   # Gaming
   # adding those to packages isn't enough for some permissions reasons
