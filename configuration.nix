@@ -99,6 +99,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
+      kdePackages.kcalc
       # Gaming stuff
       vulkan-tools
     ];
