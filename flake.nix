@@ -44,6 +44,7 @@
         pkgs.nodePackages.typescript
       ];
       shellHook = ''
+        export PATH=$PATH:$HOME/go/bin
         echo "Welcome to your dev shell with gcc, python, go, node and typescript"
       '';
     };
