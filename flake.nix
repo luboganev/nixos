@@ -10,10 +10,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  let
+    system = "x86_64-linux";
+  in {
     # .nixos here is the host name from the config file
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      system = system;
       modules = [
         # build system based on that
         ./configuration.nix
@@ -28,6 +31,21 @@
           };
         }
       ];
+    };
+
+    devShells.${system}.default = let
+      pkgs = import nixpkgs { system = system; };
+    in pkgs.mkShell {
+      packages = [
+        pkgs.gcc
+        pkgs.python3
+        pkgs.go
+        pkgs.nodejs
+        pkgs.nodePackages.typescript
+      ];
+      shellHook = ''
+        echo "Welcome to your dev shell with gcc, python, go, node and typescript"
+      '';
     };
   };
 }
