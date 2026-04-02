@@ -13,6 +13,7 @@
     github-desktop
     discord
     vscode
+    vim
     vlc
     yt-dlp # download from youtube and other platforms
     id3v2 # Command line editor for id3v2 tags
