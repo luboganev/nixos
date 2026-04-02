@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "luboganev";
@@ -6,19 +6,25 @@
   home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
+    kdePackages.kate
+    kdePackages.kcalc
     keepassxc
     ghostty
     github-desktop
     discord
+    vscode
     vlc
     yt-dlp # download from youtube and other platforms
     id3v2 # Command line editor for id3v2 tags
-    protonup-ng # for updating proton GE for gaming
     # LibreOffice
     libreoffice-qt
     hunspell
     hyphenDicts.en_US
     hyphenDicts.de_DE
+    # Gaming stuff
+    protonup-ng # for updating proton GE for gaming
+    mangohud # overlay for monitoring fps, temp etc.
+    vulkan-tools # gpu tools
   ];
 
   programs.git = {
@@ -39,6 +45,6 @@
   };
 
   home.sessionVariables = {
-    STEAM_EXTRA_COMPACT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d"; # for protonup command
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d"; # for protonup command
   };
 }
