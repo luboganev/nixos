@@ -35,6 +35,9 @@
         name = "Lyubomir Ganev";
         email = "luboganev@gmail.com";
       };
+      init = {
+        defaultBranch = "main";
+      };
     };
   };
 

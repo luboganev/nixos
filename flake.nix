@@ -37,6 +37,7 @@
       pkgs = import nixpkgs { system = system; };
     in pkgs.mkShell {
       packages = [
+        pkgs.gh
         pkgs.gcc
         pkgs.python3
         pkgs.go
