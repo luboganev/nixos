@@ -151,6 +151,7 @@
     lact # Linux GPU Configuration Tool for AMD and NVIDIA
     vscode
     mangohud # overlay for monitoring fps, temp etc.
+    go # The Go programming language
   ];
 
   # ssh
