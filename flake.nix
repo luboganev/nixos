@@ -41,6 +41,7 @@
         pkgs.gcc
         pkgs.python3
         pkgs.uv # project/package manager https://docs.astral.sh/uv/
+        pkgs.jq # command-line JSON processor
         pkgs.go
         pkgs.nodejs
         pkgs.nodePackages.typescript
