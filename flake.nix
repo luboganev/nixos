@@ -40,6 +40,7 @@
         pkgs.gh
         pkgs.gcc
         pkgs.python3
+        pkgs.uv # project/package manager https://docs.astral.sh/uv/
         pkgs.go
         pkgs.nodejs
         pkgs.nodePackages.typescript
