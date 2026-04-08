@@ -35,11 +35,16 @@
 
     devShells.${system}.default = let
       pkgs = import nixpkgs { system = system; };
+      # Define python with packages included, because python doesn't like the nix way
+      pythonWithPackages = pkgs.python3.withPackages (ps: [
+        ps.pygame
+      ]);
     in pkgs.mkShell {
       packages = [
         pkgs.gh
         pkgs.gcc
-        pkgs.python3
+        # Python
+        pythonWithPackages
         pkgs.uv # project/package manager https://docs.astral.sh/uv/
         pkgs.jq # command-line JSON processor
         pkgs.go
