@@ -34,7 +34,11 @@
     };
 
     devShells.${system}.default = let
-      pkgs = import nixpkgs { system = system; };
+      # Configure Nix to allow unfree packages.
+      config = {
+        allowUnfree = true;
+      };
+      pkgs = import nixpkgs { system = system; inherit config; };
       # Define python with packages included, because python doesn't like the nix way
       pythonWithPackages = pkgs.python3.withPackages (ps: [
         ps.pygame
@@ -50,6 +54,7 @@
         pkgs.go
         pkgs.nodejs
         pkgs.nodePackages.typescript
+        pkgs.lmstudio
       ];
       shellHook = ''
         export PATH=$PATH:$HOME/go/bin
