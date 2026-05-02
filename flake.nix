@@ -8,9 +8,10 @@
       # prevent home manager from pulling its own packages and keep everything consistent
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    unstable-nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, unstable-nixpkgs,... } @ inputs:
   let
     system = "x86_64-linux";
   in {
@@ -39,6 +40,7 @@
         allowUnfree = true;
       };
       pkgs = import nixpkgs { system = system; inherit config; };
+      pkgs-unstable = import unstable-nixpkgs { system = system; inherit config; };
       # Define python with packages included, because python doesn't like the nix way
       pythonWithPackages = pkgs.python3.withPackages (ps: [
         ps.pygame
@@ -55,10 +57,12 @@
         pkgs.nodejs
         pkgs.nodePackages.typescript
         pkgs.lmstudio
+        pkgs-unstable.hugo
       ];
       shellHook = ''
         export PATH=$PATH:$HOME/go/bin
-        echo "Welcome to your dev shell with gcc, python, go, node and typescript"
+        echo "Welcome to your dev shell"
+        cd ~/
       '';
     };
   };
