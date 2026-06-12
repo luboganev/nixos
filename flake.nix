@@ -2,9 +2,9 @@
   description = "My Nixos setup";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11"; # nixpkgs is shortcut for github:nixos/nixpkgs
+    nixpkgs.url = "nixpkgs/nixos-26.05"; # nixpkgs is shortcut for github:nixos/nixpkgs
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       # prevent home manager from pulling its own packages and keep everything consistent
       inputs.nixpkgs.follows = "nixpkgs";
     };
