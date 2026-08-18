@@ -86,11 +86,6 @@
     isNormalUser = true;
     description = "Lyubomir Ganev";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-      # Gaming stuff
-      vulkan-tools
-    ];
   };
 
   # Couldn't install and configure steam with home manager, thus here
@@ -127,9 +122,7 @@
   environment.systemPackages = with pkgs; [
     git
     bat
-    lact # Linux GPU Configuration Tool for AMD and NVIDIA
-    vscode
-    mangohud # overlay for monitoring fps, temp etc.
+    lact # Linux GPU Configuration Tool for AMD and NVIDIA.
   ];
 
   # ssh
@@ -146,7 +139,20 @@
   systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings = {
+    # Enable flakes (can be also done in home manager but we do it here)
+    experimental-features = [ "nix-command" "flakes" ];
+    # The store will be optimised during every build.
+    auto-optimise-store = true;
+  };
+  nix.optimise.automatic = true;
+
+  # Automatic store cleanup
+  nix.gc = {
+    automatic = true;
+    dates="weekly";
+    options="--delete-older-than 14d";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
